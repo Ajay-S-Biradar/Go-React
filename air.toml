@@ -1,0 +1,9 @@
+root = "." # specifying the root dir 
+tmp_dir = "tmp" # where the air will store the temperory files 
+
+[build] #build config 
+    bin = "main" #name the binary file to be generated after building prj 
+    cmd = "go build -o {{.Output}} {{.Input}}" #command to build the project
+    exclude = [".git", "tmp/*", "client/"] #excluded from monitoring the changes
+    include = ["**/*.go"] #file pattern to include
+    ignore = ["tmp/*"] #ignore while triggered for build 
