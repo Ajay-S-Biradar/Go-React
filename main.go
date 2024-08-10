@@ -15,6 +15,11 @@ var todos []model.Todo
 
 func main() {
 	fmt.Println("Running")
+
+	//removing an item from array using the index of item
+	// arr := []int{1,2,3,4,5,6,7,}
+	// arr = append(arr[:3], arr[3],arr[5],arr[4])
+
 	fmt.Println(todos)
 	app := fiber.New()
 

@@ -6,7 +6,7 @@
 
 # Test binary, build folder
 *.test
-tmp/
+build/
 
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
