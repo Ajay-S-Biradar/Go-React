@@ -7,5 +7,6 @@ import (
 
 func SetupTodoRoutes(app *fiber.App) {
 	app.Get("/api/assistant", controllers.GetTask) //.Post("/api/assistant", controllers.AddTask)
-	// app.Post("/api/assistant/work", controllers.CreateWork)
+	app.Post("/api/assistant", controllers.AddTask)
+	app.Put("/api/assistant/:id", controllers.EditTask)
 }
