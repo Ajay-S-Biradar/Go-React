@@ -57,7 +57,7 @@ func AddTask(c *fiber.Ctx) error {
 	return c.JSON(fiber.Map{"success": true, "addedTodo": todo})
 }
 
-func EditTask(c *fiber.Ctx) error {
+func CheckTask(c *fiber.Ctx) error {
 	// c.BodyParser()
 	id := c.Params("id")
 	fmt.Println("id:", id)
@@ -74,5 +74,20 @@ func EditTask(c *fiber.Ctx) error {
 	if err != nil {
 		return err
 	}
+	return c.JSON(fiber.Map{"success": true})
+}
+
+func DeleteTask(c *fiber.Ctx) error {
+	id := c.Params("id")
+	objectId, err := primitive.ObjectIDFromHex(id)
+
+	if err != nil {
+		return c.JSON(fiber.Map{"Error": "Error while converting"})
+	}
+	_, err = config.Collection.DeleteOne(context.Background(), bson.M{"_id": objectId})
+	if err != nil {
+		return c.JSON(fiber.Map{"Error": err})
+	}
+
 	return c.JSON(fiber.Map{"success": true})
 }
